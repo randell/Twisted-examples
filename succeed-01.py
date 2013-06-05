@@ -1,12 +1,12 @@
 from twisted.internet import reactor, defer
 
-def someDeferredFunction():
+def someAsynchronousFunction():
     return defer.succeed("Hi!")
 
 def handleResult(result):
     print "result: " + str(result)
 
-d = someDeferredFunction()
+d = someAsynchronousFunction()
 d.addCallback(handleResult)
 
 reactor.run()

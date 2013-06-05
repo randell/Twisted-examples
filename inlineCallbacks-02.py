@@ -1,8 +1,5 @@
-"""
-There are no inlineCallbacks here. This code is just used to compare with a code with inlineCallbacks.
-"""
-
 from twisted.internet import reactor, defer
+from twisted.internet.defer import inlineCallbacks
 
 def someDeferredFunction():
     d = defer.Deferred()
@@ -13,12 +10,10 @@ def someDeferredFunction():
 def handleResult(result):
     print "result: " + str(result)
 
-
+@inlineCallbacks
 def functionWithAsyncProcess():
-    d = someDeferredFunction()
-    d.addCallback(handleResult)
-
-    return d
+    result = yield someDeferredFunction()
+    handleResult(result)
 
 functionWithAsyncProcess()
 reactor.run()
