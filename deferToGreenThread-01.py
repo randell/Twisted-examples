@@ -2,7 +2,7 @@ from twisted.internet import reactor
 
 from eventlet.twistedutil import deferToGreenThread
 from eventlet.twistedutil import join_reactor
-from eventlet.green import httplib, urllib2
+from eventlet.green import urllib2
 
 def http_request():
     request = urllib2.Request("http://randell.ph")
